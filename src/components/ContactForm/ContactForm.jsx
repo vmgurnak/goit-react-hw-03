@@ -1,13 +1,26 @@
 import { useId } from 'react';
 import css from './ContactForm.module.css';
 
-const ContactForm = () => {
+import { nanoid } from 'nanoid';
+
+const ContactForm = ({ addContact }) => {
   const nameId = useId();
   const numberId = useId();
 
+  const hadlerSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(evt);
+    addContact({
+      id: nanoid(),
+      name: evt.target.elements.name.value,
+      number: evt.target.elements.number.value,
+    });
+    evt.target.reset();
+  };
+
   return (
     <div className={css.contactFormWrap}>
-      <form className={css.contactForm}>
+      <form className={css.contactForm} onSubmit={hadlerSubmit}>
         <label className={css.contactFormLabel} htmlFor={nameId}>
           Name
         </label>

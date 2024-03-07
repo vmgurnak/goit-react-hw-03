@@ -5,7 +5,7 @@ import css from './Contact.module.css';
 import { FaPhone } from 'react-icons/fa6';
 import { IoIosContact } from 'react-icons/io';
 
-const Contact = ({ name, number }) => {
+const Contact = ({ name, number, id, deleteContact }) => {
   return (
     <div className={css.contactWrap}>
       <div className={css.contactData}>
@@ -22,7 +22,9 @@ const Contact = ({ name, number }) => {
           <p className={css.conactTitle}>{number}</p>
         </div>
       </div>
-      <button className={css.contactBtn}>Delete</button>
+      <button className={css.contactBtn} onClick={() => deleteContact(id)}>
+        Delete
+      </button>
     </div>
   );
 };
