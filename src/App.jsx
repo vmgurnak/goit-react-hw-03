@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import ContactForm from './components/ContactForm/ContactForm';
+import ContactFormFormik from './components/ContactForm/ContactFormFormik';
+
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 
@@ -8,11 +10,24 @@ import initialContacts from './contactsList.json';
 
 const App = () => {
   // state contacts
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    // data verification in LS
+    const savedContacts = window.localStorage.getItem('contacts');
+    if (savedContacts !== null) {
+      return JSON.parse(savedContacts);
+    }
+    return initialContacts;
+  });
+
   // state filter
   const [filter, setFilter] = useState('');
 
-  // function updated state
+  // useEffect, save LS
+  useEffect(() => {
+    window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
+  // function updated state, addContact
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
       return [...prevContacts, newContact];
@@ -37,8 +52,13 @@ const App = () => {
     <div className="container">
       <h1 className="title">Phonebook</h1>
 
+      <h2>ContactForm</h2>
       {/* send function updated state */}
       <ContactForm addContact={addContact} />
+
+      <h2>ContactFormFormik </h2>
+      {/* send function updated state */}
+      <ContactFormFormik addContact={addContact} />
 
       {/* send filter and function delete contact */}
       <SearchBox filter={filter} setFilter={setFilter} />
