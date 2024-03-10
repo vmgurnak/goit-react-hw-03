@@ -28,21 +28,21 @@ const App = () => {
   }, [contacts]);
 
   // function updated state, addContact
-  const addContact = (newContact) => {
-    setContacts((prevContacts) => {
+  const addContact = newContact => {
+    setContacts(prevContacts => {
       return [...prevContacts, newContact];
     });
   };
 
   // function delete contact
-  const deleteContact = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId);
+  const deleteContact = contactId => {
+    setContacts(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== contactId);
     });
   };
 
   // filter contacts
-  const filterContacts = contacts.filter((contact) =>
+  const filterContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
@@ -50,11 +50,11 @@ const App = () => {
     <div className="container">
       <h1 className="title">Phonebook</h1>
 
-      <h2>ContactForm</h2>
+      {/* <h2>ContactForm</h2> */}
       {/* send function updated state */}
-      <ContactForm addContact={addContact} />
+      {/* <ContactForm addContact={addContact} /> */}
 
-      <h2>ContactForm (Formik) </h2>
+      {/* <h2>ContactForm (Formik) </h2> */}
       {/* send function updated state */}
       <ContactFormFormik addContact={addContact} />
 
