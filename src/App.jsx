@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactFormFormik from './components/ContactForm/ContactFormFormik';
-
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 
@@ -46,8 +46,6 @@ const App = () => {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  console.log(filterContacts);
-
   return (
     <div className="container">
       <h1 className="title">Phonebook</h1>
@@ -56,7 +54,7 @@ const App = () => {
       {/* send function updated state */}
       <ContactForm addContact={addContact} />
 
-      <h2>ContactFormFormik </h2>
+      <h2>ContactForm (Formik) </h2>
       {/* send function updated state */}
       <ContactFormFormik addContact={addContact} />
 

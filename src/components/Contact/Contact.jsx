@@ -1,5 +1,3 @@
-// import css from './Contact.module.css';
-
 import css from './Contact.module.css';
 
 import { FaPhone } from 'react-icons/fa6';
@@ -13,13 +11,13 @@ const Contact = ({ name, number, id, deleteContact }) => {
           <div className={css.contactIconWrap}>
             <IoIosContact className={css.contactIcon} size="24" />
           </div>
-          <p className={css.conactTitle}>{name}</p>
+          <p className={css.contactTitle}>{name}</p>
         </div>
         <div className={css.contactCont}>
           <div className={css.contactIconWrap}>
             <FaPhone className={css.contactIcon} size="18" />
           </div>
-          <p className={css.conactTitle}>{number}</p>
+          <p className={css.contactTitle}>{number}</p>
         </div>
       </div>
       <button className={css.contactBtn} onClick={() => deleteContact(id)}>

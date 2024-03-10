@@ -1,15 +1,17 @@
-import { useId } from 'react';
 import css from './ContactForm.module.css';
-
+// useId
+import { useId } from 'react';
 import { nanoid } from 'nanoid';
 
+// Component ContactForm
 const ContactForm = ({ addContact }) => {
+  // id for label and field
   const nameId = useId();
   const numberId = useId();
 
+  // Callback function for Submit
   const hadlerSubmit = (evt) => {
     evt.preventDefault();
-    console.log(evt);
     addContact({
       id: nanoid(),
       name: evt.target.elements.name.value,
@@ -20,7 +22,11 @@ const ContactForm = ({ addContact }) => {
 
   return (
     <div className={css.contactFormWrap}>
-      <form className={css.contactForm} onSubmit={hadlerSubmit}>
+      <form
+        className={css.contactForm}
+        onSubmit={hadlerSubmit}
+        autoComplete="off"
+      >
         <label className={css.contactFormLabel} htmlFor={nameId}>
           Name
         </label>
@@ -29,6 +35,9 @@ const ContactForm = ({ addContact }) => {
           type="text"
           name="name"
           id={nameId}
+          required
+          minLength="3"
+          maxLength="50"
         />
         <label className={css.contactFormLabel} htmlFor={numberId}>
           Number
@@ -38,6 +47,9 @@ const ContactForm = ({ addContact }) => {
           type="text"
           name="number"
           id={numberId}
+          required
+          minLength="3"
+          maxLength="50"
         />
         <button className={css.contactFormBtn} type="submit">
           Add contact
