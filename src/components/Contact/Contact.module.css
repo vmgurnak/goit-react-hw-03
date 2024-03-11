@@ -39,6 +39,7 @@
 }
 
 .contactTitle {
+  word-break: break-all;
 }
 
 .contactBtn {

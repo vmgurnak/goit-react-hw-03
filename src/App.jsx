@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+// import ContactForm1 from './components/ContactForm/ContactForm1';
 import ContactForm from './components/ContactForm/ContactForm';
-import ContactFormFormik from './components/ContactForm/ContactFormFormik';
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 
@@ -52,11 +52,11 @@ const App = () => {
 
       {/* <h2>ContactForm</h2> */}
       {/* send function updated state */}
-      {/* <ContactForm addContact={addContact} /> */}
+      {/* <ContactForm1 addContact={addContact} /> */}
 
       {/* <h2>ContactForm (Formik) </h2> */}
       {/* send function updated state */}
-      <ContactFormFormik addContact={addContact} />
+      <ContactForm addContact={addContact} />
 
       {/* send filter and function delete contact */}
       <SearchBox filter={filter} setFilter={setFilter} />
